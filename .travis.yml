@@ -1,6 +1,12 @@
-language: objective-c
+language:  objective-c
 osx_image: xcode611
-before_install: true
+
+install:
+    - brew install carthage
+
 script:
     - xcodebuild -scheme 'Cartography-Mac' test
     - xcodebuild -scheme 'Cartography-iOS' test
+    # Validate Carthage & CocoaPods compatibility
+    - carthage build --no-skip-current
+    - pod lib lint
