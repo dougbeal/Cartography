@@ -4,6 +4,7 @@ osx_image: xcode611
 install:
     - brew update
     - brew install carthage
+    - gem install cocoapods --pre
 
 script:
     - xcodebuild -scheme 'Cartography-Mac' test
