@@ -9,12 +9,15 @@
 import Cartography
 import XCTest
 
+
 class EdgeTests: XCTestCase {
     var superview: View!
     var view: View!
+    let xSize: CGFloat = 400.0
+    let ySize: CGFloat = 400.0
 
     override func setUp() {
-        superview = View(frame: CGRectMake(0, 0, 400, 400))
+        superview = View(frame: CGRectMake(0, 0, xSize, xSize))
 
         view = View(frame: CGRectZero)
         superview.addSubview(view)
@@ -33,6 +36,14 @@ class EdgeTests: XCTestCase {
         XCTAssert(CGRectGetMinY(view.frame) == 100, "It should layout the top edge")
     }
 
+    func testTopMargin() {
+        layout(view) { view in
+            view.topMargin == view.superview!.topMargin + 100; return
+        }
+
+        XCTAssert(CGRectGetMinY(view.frame) == 100, "It should layout the top edge")
+    }    
+
     func testRight() {
         layout(view) { view in
             view.right == view.superview!.right - 100; return
@@ -40,6 +51,17 @@ class EdgeTests: XCTestCase {
 
         XCTAssert(CGRectGetMaxX(view.frame) == 300, "It should layout the right edge")
     }
+
+    func testRightMargin() {
+        let offset: CGFloat = 100.0
+        let rightLayoutMargin = view.superview!.layoutMargins.right
+        layout(view) { view in
+            view.right == view.superview!.rightMargin - offset; return
+        }
+
+        
+        XCTAssert(CGRectGetMaxX(view.frame) == xSize - rightLayoutMargin - offset, "It should layout the right edge \(view.frame), including margin")
+    }    
 
     func testBottom() {
         layout(view) { view in
