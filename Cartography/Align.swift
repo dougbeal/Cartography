@@ -18,6 +18,12 @@ private func makeEqual<P: RelativeEquality>(attribute: LayoutProxy -> P, first: 
     }
 }
 
+public func align(top array: [LayoutProxy]) -> [NSLayoutConstraint] {
+    let first = array[0]
+    let rest = Array(array[1..<array.count])
+    return makeEqual({ $0.top }, first, rest)
+} 
+
 public func align(top first: LayoutProxy, rest: LayoutProxy...) -> [NSLayoutConstraint] {
     return makeEqual({ $0.top }, first, rest)
 }
