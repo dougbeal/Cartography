@@ -114,6 +114,19 @@ layout(view) { view in
 Swift](https://github.com/robb/Cartography/issues/9), this only affects single
 line blocks, however.)
 
+If you need to align multiple views by a common edge, you can use the `align`
+methods:
+
+```swift
+layout(view1, view2, view3) { view1, view2, view3 in
+    align(top: view1, view2, view3); return
+}
+```
+
+Which is equivalent to `view1.top == view2.top; view2.top == view3.top`. Similar
+variants exist for `top`, `right` `bottom`, `left`, `leading`, `trailing`,
+`centerX`, `centerY` and `baseline`.
+
 ## Setting priorities
 
 You can set the priorities of your constraints using the `~` operator:
@@ -148,6 +161,11 @@ layout(view) { view in
     constraints = (view.size == view.superview!.size ~ 100); return
 }
 ```
+
+## Support
+
+Please, don't hesitate to [file an
+issue](https://github.com/robb/Cartography/issues/new) if you have questions.
 
 ## About Cartography
 
