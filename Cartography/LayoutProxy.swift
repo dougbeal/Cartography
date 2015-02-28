@@ -30,6 +30,17 @@ public class LayoutProxy {
 
     public let baseline: Edge
 
+    public let firstBaseline: Edge
+    public let leftMargin: Edge
+    public let rightMargin: Edge
+    public let topMargin: Edge
+    public let bottomMargin: Edge
+    public let leadingMargin: Edge
+    public let trailingMargin: Edge
+    public let centerXWithinMargins: Edge
+    public let centerYWithinMargins: Edge
+    public let notAnAttribute    : Edge
+
     internal let context: Context
     internal let view: View
 
@@ -66,5 +77,15 @@ public class LayoutProxy {
         center = Point.Center(context, view)
 
         baseline = Edge.Baseline(context, view)
+        firstBaseline = Edge.FirstBaseline(context,view)
+        leftMargin = Edge.LeftMargin(context,view)
+        rightMargin = Edge.RightMargin(context,view)
+        topMargin = Edge.TopMargin(context,view)
+        bottomMargin = Edge.BottomMargin(context,view)
+        leadingMargin = Edge.LeadingMargin(context,view)
+        trailingMargin = Edge.TrailingMargin(context,view)
+        centerXWithinMargins = Edge.CenterXWithinMargins(context,view)
+        centerYWithinMargins = Edge.CenterYWithinMargins(context,view)
+        notAnAttribute         = Edge.NotAnAttribute(context,view)
     }
 }
