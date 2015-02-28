@@ -12,7 +12,35 @@ import UIKit
 import AppKit
 #endif
 
+/*
+    case Left
+    case Right
+    case Top
+    case Bottom
+    case Leading
+    case Trailing
+    case Width
+    case Height
+    case CenterX
+    case CenterY
+    case Baseline
+
+
+    case FirstBaseline
+    case LeftMargin
+    case RightMargin
+    case TopMargin
+    case BottomMargin
+    case LeadingMargin
+    case TrailingMargin
+    case CenterXWithinMargins
+    case CenterYWithinMargins
+    case NotAnAttribute
+}
+*/
+
 public enum Edge : Property, RelativeEquality, RelativeInequality, Addition, Multiplication {
+           
     case Top(Context, View)
     case Right(Context, View)
     case Bottom(Context, View)
@@ -25,6 +53,17 @@ public enum Edge : Property, RelativeEquality, RelativeInequality, Addition, Mul
     case CenterY(Context, View)
 
     case Baseline(Context, View)
+
+    case FirstBaseline(Context, View)
+    case LeftMargin(Context, View)
+    case RightMargin(Context, View)
+    case TopMargin(Context, View)
+    case BottomMargin(Context, View)
+    case LeadingMargin(Context, View)
+    case TrailingMargin(Context, View)
+    case CenterXWithinMargins(Context, View)
+    case CenterYWithinMargins(Context, View)
+    case NotAnAttribute(Context, View)
 
     public var attribute: NSLayoutAttribute {
         switch (self) {
@@ -40,6 +79,16 @@ public enum Edge : Property, RelativeEquality, RelativeInequality, Addition, Mul
             case let .CenterY(view): return NSLayoutAttribute.CenterY
 
             case let .Baseline(view): return NSLayoutAttribute.Baseline
+            case let .FirstBaseline(view): return NSLayoutAttribute.FirstBaseline
+            case let .LeftMargin(view): return NSLayoutAttribute.LeftMargin
+            case let .RightMargin(view): return NSLayoutAttribute.RightMargin
+            case let .TopMargin(view): return NSLayoutAttribute.TopMargin
+            case let .BottomMargin(view): return NSLayoutAttribute.BottomMargin
+            case let .LeadingMargin(view): return NSLayoutAttribute.LeadingMargin
+            case let .TrailingMargin(view): return NSLayoutAttribute.TrailingMargin
+            case let .CenterXWithinMargins(view): return NSLayoutAttribute.CenterXWithinMargins
+            case let .CenterYWithinMargins(view): return NSLayoutAttribute.CenterYWithinMargins
+            case let .NotAnAttribute                (view): return NSLayoutAttribute.NotAnAttribute
         }
     }
 
@@ -57,6 +106,16 @@ public enum Edge : Property, RelativeEquality, RelativeInequality, Addition, Mul
             case let .CenterY(context, _): return context
 
             case let .Baseline(context, _): return context
+            case let .FirstBaseline(context, _): return context
+            case let .LeftMargin(context, _): return context
+            case let .RightMargin(context, _): return context
+            case let .TopMargin(context, _): return context
+            case let .BottomMargin(context, _): return context
+            case let .LeadingMargin(context, _): return context
+            case let .TrailingMargin(context, _): return context
+            case let .CenterXWithinMargins(context, _): return context
+            case let .CenterYWithinMargins(context, _): return context
+            case let .NotAnAttribute(context, _): return context                
         }
     }
 
@@ -74,6 +133,16 @@ public enum Edge : Property, RelativeEquality, RelativeInequality, Addition, Mul
             case let .CenterY(_, view): return view
 
             case let .Baseline(_, view): return view
+            case let .FirstBaseline(_, view): return view
+            case let .LeftMargin(_, view): return view
+            case let .RightMargin(_, view): return view
+            case let .TopMargin(_, view): return view
+            case let .BottomMargin(_, view): return view
+            case let .LeadingMargin(_, view): return view
+            case let .TrailingMargin(_, view): return view
+            case let .CenterXWithinMargins(_, view): return view
+            case let .CenterYWithinMargins(_, view): return view
+            case let .NotAnAttribute                (_, view): return view
         }
     }
 }
